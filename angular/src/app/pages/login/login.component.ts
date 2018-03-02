@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   private password;
   private loginMessage;
   private type;
-
   constructor(private _apiService: APIService ,private route: ActivatedRoute, private router: Router){}
 
   ngOnInit() {
@@ -27,10 +26,10 @@ export class LoginComponent implements OnInit {
 
   loginClick(){
     if(this.username != null && this.password != null){
-      this._apiService.login({ username: this.username, password: this.password ,type : this.type }).subscribe((apiresponse: APIData)=>{
+      this._apiService.login({ username: this.username, password: this.password, type : this.type }).subscribe((apiresponse: APIData)=>{
         this.loginMessage = apiresponse.msg;
-        if( apiresponse.msg.includes('Successful') ){ //D2a 7aga mo2kta
-          //localStorage.setItem('currentUser',JSON.stringify('null'));
+        console.log( this.loginMessage.type);
+        if( apiresponse.msg.includes('Successful') ){ 
           localStorage.setItem('currentUser',JSON.stringify(this.username));
           if( apiresponse.msg.includes('user') ){
             localStorage.setItem('type',JSON.stringify('user'));
@@ -41,7 +40,6 @@ export class LoginComponent implements OnInit {
           else if( apiresponse.msg.includes('manager') ){
             localStorage.setItem('type',JSON.stringify('manager'));
           }
-          //console.log(this.type);
          console.log(apiresponse.msg);
           this.showDashboard();
         } else {
