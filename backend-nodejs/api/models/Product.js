@@ -11,19 +11,12 @@ var productSchema = mongoose.Schema({
     required: true,
     min: 0
   },
-  //seller_name: {
-    //type: String,
-    //required: false,
-    //trim: true
- // },
   createdAt: {
     type: Date,
     default: Date.now
   },
   updatedAt: Date
-
-},
-{collection: 'Products'}
+},{collection: 'Products'}
 );
 
 mongoose.model('Product', productSchema);

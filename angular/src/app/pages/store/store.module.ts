@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ToasterModule } from 'angular2-toaster';
+import { StoreComponent } from './store.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-
 import { ThemeModule } from '../../@theme/theme.module';
-import { StoreRoutingModule, routedComponents } from './store-routing.module';
-import { SmartTableService } from '../../@core/data/smart-table.service';
 
 @NgModule({
   imports: [
     ThemeModule,
-    StoreRoutingModule,
+    ToasterModule,
     Ng2SmartTableModule,
   ],
   declarations: [
-    ...routedComponents,
-  ],
-  providers: [
-    SmartTableService,
+    StoreComponent,
   ],
 })
+
 export class StoreModule { }
